@@ -69,6 +69,7 @@ hashed embedding 기반으로 메모리 사용량 최적화
 
 
 ## 6. 관련 논문 및 이론 학습
+[https://deepctr-doc.readthedocs.io/en/latest/index.html]
 
 DeepFM의 Feature Interaction 구조(FM + Deep layer) 원리 정리
 
@@ -79,7 +80,6 @@ AutoInt, DIN, BST 등 CTR 모델군의 차이점 학습
 Embedding cardinality와 unknown(UNK) 정책의 필요성 이해
 
 Platt scaling vs isotonic regression calibration 차이 정리
-[https://deepctr-doc.readthedocs.io/en/latest/index.html]
 
 
 ## 7. 검증 데이터 설계
