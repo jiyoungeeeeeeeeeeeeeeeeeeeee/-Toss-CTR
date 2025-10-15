@@ -1,10 +1,10 @@
 # [Toss] CTR
 
-🧠 DeepFM CTR Modeling Project (Updated)
+🧠 DeepFM CTR Modeling Project 
 
-CTR 예측 대회 데이터를 기반으로 DeepFM 모델을 구축하고, 고카디널리티 피처와 cold start 문제를 다루는 과정에서 얻은 실전 지식을 기록한 프로젝트입니다.
+  CTR 예측 대회 데이터를 기반으로 DeepFM 모델을 구축하고, 고카디널리티 피처와 cold start 문제를 다루는 과정에서 얻은 실전 지식을 기록한 프로젝트입니다.
 
-🧰 주요 학습 포인트
+주요 학습 포인트
 1. Feature Engineering 전략
 
 inventory_id ⊕ l_feat_14 교차 피처 설계 및 Top-N 해시 전략 적용
@@ -57,7 +57,7 @@ test ID 보존 후 제출용 merge 로직 설계
 
 hashed embedding 기반으로 메모리 사용량 최적화 
 
-🧪 실험 및 성능 결과
+실험 및 성능 결과
 | Experiment                  | Description                                     | AUC (OOF) | LogLoss (OOF) |
 |-----------------------------|-------------------------------------------------|-----------|--------------|
 | Baseline                    | Basic DeepFM (no cross)                         | 0.585     | 0.209        |
@@ -67,7 +67,7 @@ hashed embedding 기반으로 메모리 사용량 최적화
 | Calibration (Platt Scaling) | 확률 보정 적용                                  | **0.592** | **0.204**    |
 
 
-🧭 내가 얻은 인사이트 
+내가 얻은 인사이트 
 
 cross feature 전략이 단순 해시보다 cold start 문제에 효과적이다.
 → permutation test로 영향도를 확인함.
