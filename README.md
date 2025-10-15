@@ -79,6 +79,7 @@ AutoInt, DIN, BST 등 CTR 모델군의 차이점 학습
 Embedding cardinality와 unknown(UNK) 정책의 필요성 이해
 
 Platt scaling vs isotonic regression calibration 차이 정리
+[https://deepctr-doc.readthedocs.io/en/latest/index.html]
 
 
 ## 7. 검증 데이터 설계
@@ -107,6 +108,7 @@ test 데이터에서 day_of_week = 7만 존재하는 특이 분포 확인.
 
 별도의 명시적 timestamp 컬럼이 없어서 시간 기반 순서 보장이 불가능 → 잘못 분할 시 시간 누수 위험.
 
+
 ### 7.2 교차 그룹 결성: inventory_id × l_feat_14
 
 위 시각화 결과를 바탕으로, 실제 서빙/대회 환경에서 클릭 확률에 큰 영향을 주는 교차 상호작용을 검증 단계에서 동일하게 반영하기 위해 교차 그룹을 분할 단위로 채택했다.
@@ -119,6 +121,7 @@ Stratified(층화): 타깃 비율(CTR)을 fold 간 유사하게 유지하여 안
 
 Group(그룹보존): 동일 교차 그룹은 반드시 동일 fold에만 존재 → 데이터 누수(동일 토큰의 중복 노출) 방지
 
+
 ### 7.3 시간 누수 최소화 전략: day_of_week 1–6 학습, 7 검증
 
 test는 day_of_week = 7만 존재 → 이를 검증에서 재현해야 실제 배포/제출 상황과 일관성이 생긴다.
@@ -130,6 +133,7 @@ Train: day_of_week ∈ {1,2,3,4,5,6}
 Valid (OOF Fold): day_of_week = 7
 
 이렇게 하면 “미래(7)”를 과거(1–6)로 맞히는 구조가 되어, 시간 누수 최소화 + test 분포 시뮬레이션을 동시에 달성한다.
+
 
 ### 7.4 OOF 학습/평가 체계
 
@@ -182,6 +186,8 @@ day_of_week=7에 표본이 적다면 신뢰구간이 넓어질 수 있음 → To
 | Calibration (Platt Scaling) | 확률 보정 적용                                  | **0.592** | **0.204**    |
 
 
+
+
 ## 내가 얻은 인사이트 
 
 cross feature 전략이 단순 해시보다 cold start 문제에 효과적이다.
@@ -194,3 +200,6 @@ calibration은 AUC 향상보다 확률 안정성 향상이라는 실질적 이�
 데이터 split 시 is_train flag를 활용하면 모델링–제출 파이프라인이 단순화된다.
 
 hashed embedding은 sparse high-cardinality feature 처리에서 메모리 절감에 탁월하다.
+
+
+더 자새한 내용이나 34일간의 개발일지는 개인 블로그에 정리했다.[https://blog.naver.com/f_f_f_f_f_f_f_f_f_]
